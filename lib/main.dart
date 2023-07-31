@@ -25,6 +25,14 @@ class QuestionApp extends StatelessWidget {
             const ElevatedButton(
               onPressed: null,
               child: Text('Resposta 1'),
+            ),
+            const ElevatedButton(
+              onPressed: null,
+              child: Text('Resposta 2'),
+            ),
+            const ElevatedButton(
+              onPressed: null,
+              child: Text('Resposta 3'),
             )
           ],
         ),
