@@ -4,7 +4,14 @@ main () {
   runApp(QuestionApp());
 }
 
-class QuestionApp extends StatelessWidget {
+class QuestionAppState extends State<QuestionApp> {
+  var selectedQuestion = 0;
+
+  void answer() {
+    setState(() {
+      selectedQuestion++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,22 +28,29 @@ class QuestionApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Text(questions[0]),
-            const ElevatedButton(
-              onPressed: null,
-              child: Text('Resposta 1'),
+            Text(questions[selectedQuestion]),
+            ElevatedButton(
+              onPressed: answer,
+              child: const Text('Resposta 1'),
             ),
-            const ElevatedButton(
-              onPressed: null,
-              child: Text('Resposta 2'),
+            ElevatedButton(
+              onPressed: answer,
+              child: const Text('Resposta 2'),
             ),
-            const ElevatedButton(
-              onPressed: null,
-              child: Text('Resposta 3'),
+            ElevatedButton(
+              onPressed: answer,
+              child: const Text('Resposta 3'),
             )
           ],
         ),
       ),
     );
+  }
+}
+class QuestionApp extends StatefulWidget {
+
+  @override
+  QuestionAppState createState() {
+    return QuestionAppState();
   }
 }
