@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 main () {
   runApp(QuestionApp());
@@ -28,7 +29,7 @@ class _QuestionAppState extends State<QuestionApp> {
         ),
         body: Column(
           children: [
-            Text(questions[_selectedQuestion]),
+            Question(questions[_selectedQuestion]),
             ElevatedButton(
               onPressed: _answer,
               child: const Text('Resposta 1'),
@@ -48,6 +49,7 @@ class _QuestionAppState extends State<QuestionApp> {
   }
 }
 class QuestionApp extends StatefulWidget {
+  const QuestionApp({super.key});
 
   @override
   _QuestionAppState createState() {
