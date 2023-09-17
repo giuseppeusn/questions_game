@@ -17,9 +17,19 @@ class _QuestionAppState extends State<QuestionApp> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> questions = [
-      'Qual é a sua cor favorita?',
-      'Qual é a seu animal favorito?',
+    final List<Map<String, Object>> questions = [
+      {
+        'text': 'Qual é a sua cor favorita?',
+        'answer': ['Preto','Vermelho','Verde','Branco',]
+      },
+      {
+        'text': 'Qual é a seu animal favorito?',
+        'answer': ['Coelho','Cobra','Elefante','Leão',]
+      },
+      {
+        'text': 'Qual é sua estação favorita?',
+        'answer': ['Verão','Inverno','Outono','Primavera',]
+      }
     ];
 
 
@@ -30,10 +40,10 @@ class _QuestionAppState extends State<QuestionApp> {
         ),
         body: Column(
           children: [
-            Question(questions[_selectedQuestion]),
-            const Answer("Resposta 1"),
-            const Answer("Resposta 2"),
-            const Answer("Resposta 3"),
+            Question(questions[_selectedQuestion]['text'].toString()),
+            Answer("Resposta 1", _answer),
+            Answer("Resposta 2", _answer),
+            Answer("Resposta 3", _answer),
           ],
         ),
       ),
