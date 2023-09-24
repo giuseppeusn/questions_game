@@ -10,15 +10,30 @@ class _QuestionAppState extends State<QuestionApp> {
   final _questions = const [
     {
       'text': 'Qual é a sua cor favorita?',
-      'answer': ['Preto','Vermelho','Verde','Branco']
+      'answer': [
+        {'text': 'Preto', 'points': 10},
+        {'text': 'Vermelho', 'points': 5},
+        {'text': 'Verde', 'points': 3},
+        {'text': 'Branco', 'points': 1}
+      ]
     },
     {
       'text': 'Qual é a seu animal favorito?',
-      'answer': ['Coelho','Cobra','Elefante','Leão']
+      'answer': [
+        {'text': 'Coelho', 'points': 10},
+        {'text': 'Cobra', 'points': 5},
+        {'text': 'Elefante', 'points': 3},
+        {'text': 'Leão', 'points': 1}
+      ]
     },
     {
       'text': 'Qual é sua estação favorita?',
-      'answer': ['Verão','Inverno','Outono','Primavera']
+      'answer': [
+        {'text': 'Verão', 'points': 10},
+        {'text': 'Outono', 'points': 5},
+        {'text': 'Inverno', 'points': 3},
+        {'text': 'Primavera', 'points': 1}
+      ]
     }
   ];
 
@@ -37,10 +52,6 @@ class _QuestionAppState extends State<QuestionApp> {
   @override
   Widget build(BuildContext context) {
 
-    List<String> answers = hasQuestionSelected
-      ? _questions[_selectedQuestion]['answer'] as List<String>
-      : [];
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -50,7 +61,6 @@ class _QuestionAppState extends State<QuestionApp> {
         ? Quiz(
             questions: _questions,
             selectedQuestion: _selectedQuestion,
-            answers: answers, 
             onAnswer: _answer
           )
         : const Result()

@@ -7,7 +7,6 @@ class Quiz extends StatelessWidget {
     {
       required this.questions,
       required this.selectedQuestion,
-      required this.answers,
       required this.onAnswer,
       super.key
     }
@@ -15,16 +14,22 @@ class Quiz extends StatelessWidget {
 
   final List<Map<String, Object>> questions;
   final int selectedQuestion;
-  final List answers;
   final void Function() onAnswer;
 
+  bool get hasQuestionSelected {
+    return selectedQuestion < questions.length;
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, Object>> answers = hasQuestionSelected
+      ? questions[selectedQuestion]['answer'] as List<Map<String, Object>>
+      : [];
+
     return Column (
       children: [
         Question(questions[selectedQuestion]['text'] as String),
-        ...answers.map((text) => Answer(text, onAnswer)).toList()
+        ...answers.map((resp) => Answer(resp['text'] as String, onAnswer)).toList()
       ]
     );
   }
