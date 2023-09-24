@@ -51,7 +51,12 @@ class _QuestionAppState extends State<QuestionApp> {
             Question(_questions[_selectedQuestion]['text'] as String),
             ...answers.map((text) => Answer(text, _answer)).toList()
           ],
-        ) : null,
+        ) : const Center (
+          child: Text(
+            'Formulário respondido!',
+            style: TextStyle(fontSize: 28),
+          ),
+        ),
       ),
     );
   }
