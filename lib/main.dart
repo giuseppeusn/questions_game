@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './question.dart';
-import './answer.dart';
+import 'package:questions_game/quiz.dart';
+import './result.dart';
 
 void main () => runApp(const QuestionApp());
 
@@ -46,17 +46,14 @@ class _QuestionAppState extends State<QuestionApp> {
         appBar: AppBar(
           title: const Text('Perguntas'),
         ),
-        body: hasQuestionSelected ? Column(
-          children: [
-            Question(_questions[_selectedQuestion]['text'] as String),
-            ...answers.map((text) => Answer(text, _answer)).toList()
-          ],
-        ) : const Center (
-          child: Text(
-            'Formulário respondido!',
-            style: TextStyle(fontSize: 28),
-          ),
-        ),
+        body: hasQuestionSelected 
+        ? Quiz(
+            questions: _questions,
+            selectedQuestion: _selectedQuestion,
+            answers: answers, 
+            onAnswer: _answer
+          )
+        : const Result()
       ),
     );
   }
