@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({super.key});
+  const Result({
+    required this.score,
+    super.key
+  });
+
+  final int score;
 
   @override
   Widget build(BuildContext context) {
-    return const Center (
+    return Center (
       child: Text(
-        'Formulário respondido!',
-        style: TextStyle(fontSize: 28),
+        "Parabéns, você fez ${score.toString()} pontos!",
+        style: const TextStyle(fontSize: 28),
       ));
   }
 }

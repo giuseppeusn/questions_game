@@ -6,6 +6,7 @@ void main () => runApp(const QuestionApp());
 
 class _QuestionAppState extends State<QuestionApp> {
   var _selectedQuestion = 0;
+  var totalScore = 0;
 
   final _questions = const [
     {
@@ -41,10 +42,11 @@ class _QuestionAppState extends State<QuestionApp> {
     return _selectedQuestion < _questions.length;
   }
 
-  void _answer() {
+  void _answer(int score) {
     if (hasQuestionSelected) {
       setState(() {
         _selectedQuestion++;
+        totalScore += score;
       });
     }
   }
@@ -63,7 +65,7 @@ class _QuestionAppState extends State<QuestionApp> {
             selectedQuestion: _selectedQuestion,
             onAnswer: _answer
           )
-        : const Result()
+        : Result(score: totalScore)
       ),
     );
   }

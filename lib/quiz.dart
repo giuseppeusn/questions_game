@@ -14,7 +14,7 @@ class Quiz extends StatelessWidget {
 
   final List<Map<String, Object>> questions;
   final int selectedQuestion;
-  final void Function() onAnswer;
+  final void Function(int) onAnswer;
 
   bool get hasQuestionSelected {
     return selectedQuestion < questions.length;
@@ -29,7 +29,12 @@ class Quiz extends StatelessWidget {
     return Column (
       children: [
         Question(questions[selectedQuestion]['text'] as String),
-        ...answers.map((resp) => Answer(resp['text'] as String, onAnswer)).toList()
+        ...answers
+          .map((resp) => Answer(
+            resp['text'] as String,
+            () => onAnswer(int.parse(resp['points'].toString()))
+          ))
+          .toList()
       ]
     );
   }
