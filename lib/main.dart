@@ -51,6 +51,13 @@ class _QuestionAppState extends State<QuestionApp> {
     }
   }
 
+  void _restart() {
+    setState(() {
+      _selectedQuestion = 0;
+      totalScore = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -65,7 +72,7 @@ class _QuestionAppState extends State<QuestionApp> {
             selectedQuestion: _selectedQuestion,
             onAnswer: _answer
           )
-        : Result(score: totalScore)
+        : Result(score: totalScore, onRestart: _restart)
       ),
     );
   }
